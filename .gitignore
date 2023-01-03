@@ -1,2 +1,2 @@
-network_log.csv
+network_log*.csv
 __pycache__/
