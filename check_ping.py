@@ -34,8 +34,14 @@ def run():
   ensure_file(file_name)
 
   while True:
-    raw_ping_string = get_raw_ping_data()
-    ping = get_time_string(raw_ping_string)
+    try:
+      raw_ping_string = get_raw_ping_data()
+      ping = get_time_string(raw_ping_string)
+    except subprocess.CalledProcessError:
+      ping = 'timeout'
+    except:
+      ping = 'error'
+
     write_to_file(ping, file_name)
     time.sleep(1)
 
